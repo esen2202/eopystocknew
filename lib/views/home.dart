@@ -20,7 +20,15 @@ class HomePage extends StatelessWidget {
             RaisedButton(
               child: Text("Settings"),
               onPressed: () => Navigator.pushNamed(context, "/settings"),
-            )
+            ),
+            RaisedButton(
+              child: Text("User"),
+              onPressed: () => Navigator.pushNamed(context, "/user"),
+            ),
+            RaisedButton(
+              child: Text("Stock"),
+              onPressed: () => Navigator.pushNamed(context, "/stock"),
+            ),
           ],
         ),
       ),
