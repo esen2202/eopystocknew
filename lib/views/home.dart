@@ -29,6 +29,10 @@ class HomePage extends StatelessWidget {
               child: Text("Stock"),
               onPressed: () => Navigator.pushNamed(context, "/stock"),
             ),
+            RaisedButton(
+              child: Text("Order"),
+              onPressed: () => Navigator.pushNamed(context, "/order"),
+            ),
           ],
         ),
       ),

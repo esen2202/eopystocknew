@@ -7,7 +7,7 @@ class Stock {
 
   Stock({@required this.stockCode, @required this.amount, this.status});
 
-  factory Stock.fromJson(Map<String, dynamic> json) {
+  factory Stock.fromJsonMap(Map<String, dynamic> json) {
     return Stock(
       stockCode: json['StockCode'] as String,
       amount: json['Amount'] as int,

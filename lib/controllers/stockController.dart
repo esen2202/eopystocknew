@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class StockList extends StatelessWidget {
-  final String apiUrl = "https://192.168.2.127:8080/Stocks/getStocks";
+  final String apiUrl = "http://192.168.2.27:8080/Stocks/getStocks";
 
   Future<List<dynamic>> fetchStocks() async {
     var result = await http.get(apiUrl);
