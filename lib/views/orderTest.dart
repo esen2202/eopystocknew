@@ -1,6 +1,5 @@
 import 'package:eopystocknew/controllers/orderController.dart';
 import 'package:eopystocknew/models/order.dart';
-import 'package:eopystocknew/models/orderDetail.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -13,10 +12,10 @@ class OrderList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sipariş Listesi2'),
+        title: Text('Sipariş Listesi3'),
       ),
       body: FutureBuilder(
-        future: _orderController.getOrderList(),
+        future: _orderController.getOrders(),
         builder: (BuildContext context, AsyncSnapshot<List<Order>> snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(

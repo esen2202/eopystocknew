@@ -5,6 +5,7 @@ class OrderDetail {
   String stockCode;
   String stockName;
   int amount;
+  String status;
 
   OrderDetail(
       {this.id,
@@ -12,7 +13,8 @@ class OrderDetail {
       this.sequence,
       this.stockCode,
       this.stockName,
-      this.amount});
+      this.amount,
+      this.status});
 
   OrderDetail.fromJson(Map<String, dynamic> json) {
     id = json['Id'];
@@ -21,16 +23,16 @@ class OrderDetail {
     stockCode = json['StockCode'];
     stockName = json['StockName'];
     amount = json['Amount'];
+    status = json['Status'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Id'] = this.id;
-    data['OrderId'] = this.orderId;
-    data['Sequence'] = this.sequence;
-    data['StockCode'] = this.stockCode;
-    data['StockName'] = this.stockName;
-    data['Amount'] = this.amount;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+        'Id': this.id,
+        'OrderId': this.orderId,
+        'Sequence': this.sequence,
+        'StockCode': this.stockCode,
+        'StockName': this.stockName,
+        'Amount': this.amount,
+        'Status': this.status
+      };
 }

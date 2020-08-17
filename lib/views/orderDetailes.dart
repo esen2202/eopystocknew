@@ -2,7 +2,7 @@ import 'package:eopystocknew/controllers/orderController.dart';
 import 'package:eopystocknew/models/order.dart';
 import 'package:eopystocknew/models/orderDetail.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 ///-> Stateful
 class OrderDetails extends StatefulWidget {
@@ -70,6 +70,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                       fontFamily: "Arial", fontSize: 22),
                                 ),
                                 incButton(snapshot.data[index]),
+                                addButton(snapshot.data[index]),
                               ],
                             ),
                           ),
@@ -122,4 +123,58 @@ class _OrderDetailsState extends State<OrderDetails> {
               : new Container(),
         ]);
   }
+
+  Widget addButton(OrderDetail data) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          data.amount < 100
+              ? new IconButton(
+                  icon: new Icon(
+                    Icons.update,
+                    size: 32,
+                  ),
+                  onPressed: () => update(data),
+                )
+              : new Container(),
+        ]);
+  }
+
+  void update(OrderDetail orderDetail) {
+    _orderDetails.then((value) {
+      orderDetail.stockName = "Stock Yenilendi";
+      orderDetail.stockCode = "Stock Kodd";
+
+      FutureBuilder(
+          future: _orderController.addUpdateOrderDetail(orderDetail),
+          builder: (BuildContext context, AsyncSnapshot<OrderDetail> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasData) {
+              Fluttertoast.showToast(
+                  msg: "Güncellendi",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                  fontSize: 16.0);
+              return Container();
+            } else {
+              Fluttertoast.showToast(
+                  msg: "hata",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                  fontSize: 16.0);
+              return Container();
+            }
+          });
+    });
+  }
+
+  addUpdateOrderDetail() {}
 }

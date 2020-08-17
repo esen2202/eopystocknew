@@ -14,7 +14,7 @@ class OrderList extends StatelessWidget {
         title: Text('Sipariş Listesi'),
       ),
       body: FutureBuilder(
-        future: _orderController.getOrderList(),
+        future: _orderController.getOrders(),
         builder: (BuildContext context, AsyncSnapshot<List<Order>> snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(

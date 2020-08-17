@@ -34,10 +34,7 @@ class _CameraPageState extends State<CameraPage> {
             Text(
               'Result : ',
             ),
-            Text(
-              '$_value',
-              style: Theme.of(context).textTheme.display1,
-            ),
+            Text('$_value'),
             RaisedButton(
               onPressed: () => Navigator.pop(context),
               child: Text("Home"),
